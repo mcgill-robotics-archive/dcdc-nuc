@@ -26,7 +26,7 @@
 
 #include <usb.h>
 
-#include "dcdc-usb.h"
+#include "dcdc-nuc.h"
 
 void showhelp(char *prgname)
 {

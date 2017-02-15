@@ -25,7 +25,7 @@
 
 #include <usb.h>
 
-#include "dcdc-usb.h"
+#include "dcdc-nuc.h"
 
 #define P(t, v...) fprintf(stderr, t "\n", ##v)
 

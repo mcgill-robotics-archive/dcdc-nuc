@@ -24,7 +24,7 @@
 #include <stdlib.h>
 #include <math.h>
 
-#include "dcdc-usb.h"
+#include "dcdc-nuc.h"
 
 #define P(t, v...) fprintf(stderr, t "\n", ##v)
 static int bytes2int(unsigned char c1, unsigned char c2)

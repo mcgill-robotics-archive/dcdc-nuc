@@ -27,7 +27,7 @@
 
 #include <usb.h>
 
-#include "dcdc-usb.h"
+#include "dcdc-nuc.h"
 
 /* transforms user value to a value understood by device */
 static int vout2dev(double vout)
