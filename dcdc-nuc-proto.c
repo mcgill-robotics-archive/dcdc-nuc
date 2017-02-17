@@ -38,7 +38,6 @@ int dcdc_get_io_data(struct usb_dev_handle *h, unsigned char *buf, int buflen) {
   }
 
   c[0] = NUC_IN_REPORT_IO_DATA;
-  c[1] = 0;
 
   if (dcdc_send(h, c, 2) < 0) {
     fprintf(stderr, "Cannot send command to device\n");
@@ -63,9 +62,8 @@ int dcdc_get_io_data2(struct usb_dev_handle *h,
   }
 
   c[0] = NUC_IN_REPORT_IO_DATA2;
-  c[1] = 0;
 
-  if (dcdc_send(h, c, 2) < 0) {
+  if (dcdc_send(h, c, 1) < 0) {
     fprintf(stderr, "Cannot send command to device\n");
     return -2;
   }
