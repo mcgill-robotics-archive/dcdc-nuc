@@ -34,7 +34,7 @@ int dcdc_send(struct usb_dev_handle *h, unsigned char *data, int size) {
     return -1;
   }
   return usb_interrupt_write(h, USB_ENDPOINT_OUT + 1,
-    (char *) data, size, 1000);
+          (char *) data, size, 1000);
 }
 
 int dcdc_recv(struct usb_dev_handle *h, unsigned char *data, int size,
@@ -43,8 +43,8 @@ int dcdc_recv(struct usb_dev_handle *h, unsigned char *data, int size,
   return -1;
   }
 
-  return usb_interrupt_read(h, USB_ENDPOINT_IN + 1,
-    (char *) data, size, timeout);
+  return usb_interrupt_read(h, USB_ENDPOINT_IN + 1, 
+          (char *) data, size, timeout);
 }
 
 struct usb_dev_handle * dcdc_connect() {
@@ -100,12 +100,14 @@ int dcdc_setup(struct usb_dev_handle *h) {
     return -5;
   }
 
+  
+  /* Doesn't seem to need this for it to work
   if (usb_control_msg(h, USB_TYPE_CLASS + USB_RECIP_INTERFACE,
     0x000000a, 0x0000000, 0x0000000, buf, 0x0000000, 1000)
     < 0) {
     fprintf(stderr, "Cannot send control message\n");
     return -6;
   }
-
+  */
   return 0;
 }
