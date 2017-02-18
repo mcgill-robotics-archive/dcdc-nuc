@@ -24,4 +24,4 @@ dcdc-nuc: $(MAINSRC)
 	$(CC) $(CFLAGS) $(MAINSRC) -L. -ldcdc-nuc -o $@ $(LIBS)
 
 clean:
-	rm -rf *.o *.so dcdc-usb
+	rm -rf *.o *.so dcdc-nuc
