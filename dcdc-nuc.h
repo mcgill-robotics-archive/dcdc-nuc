@@ -4,7 +4,7 @@
 #define NUC_PID       0xd006
 #define NUC_VID       0x04D8
 
-#define MAX_TRANSFER_SIZE 24
+#define MAX_TRANSFER_SIZE 32
 
 /* USB communication wrappers */
 struct usb_dev_handle * dcdc_connect();
