@@ -23,45 +23,30 @@
 #include <unistd.h>
 #include <string.h>
 #include <ctype.h>
-
 #include <usb.h>
-
 #include "dcdc-nuc.h"
 
-void showhelp(char *prgname)
-{
-
+void showhelp(char *prgname) {
     printf ("Usage: %s [OPTION]\n", prgname);
     printf ("Options:.\n");
-    printf (" -a \t show all device io data\n");
-    printf (" -1 \t show device io data 1\n");
-    printf (" -2 \t show device io data 2\n");
     printf (" -h \t show help message\n");
 }
 
-int main(int argc, char **argv){
+int main(int argc, char **argv) {
   struct usb_dev_handle *h;
   unsigned char data[MAX_TRANSFER_SIZE];
   int ret;
   char *s;
-  int arg = 0, showall = 0, showdata = 0, showdata2 = 0;
+  int arg = 0;
 
   while ( ++arg < argc ){
     s = argv[arg];
-	  if (strncmp(s, "-a", 2) == 0) {
-      showall = 1;
-    }
-    if (strncmp(s, "-1", 2) == 0) {
-      showdata = 1;
-    }
-    if (strncmp(s, "-2", 2) == 0) {
-      showdata2 = 1;
-    }
-	  if (strncmp(s, "-h", 2) == 0){
+	if (strncmp(s, "-h", 2) == 0) {
       showhelp(argv[0]);
       return 0;
     }
   }
+  
   h = dcdc_connect();
 
   if (h == NULL){
@@ -74,20 +59,18 @@ int main(int argc, char **argv){
     return 2;
   }
 
-  if (showall || showdata){
-    if ((ret = dcdc_get_io_data(h, data, MAX_TRANSFER_SIZE)) <= 0){
-      fprintf(stderr, "Failed to get io data from device\n");
-      return 3;
-    }
-    dcdc_parse_data(data, ret);
+  if ((ret = dcdc_get_io_data(h, data, MAX_TRANSFER_SIZE)) <= 0){
+    fprintf(stderr, "Failed to get io data from device\n");
+    return 3;
   }
+  dcdc_parse_data(data, ret);
 
-  if (showall || showdata2){
-    if ((ret = dcdc_get_io_data2(h, data, MAX_TRANSFER_SIZE)) <= 0){
-      fprintf(stderr, "Failed to get io data 2 from device\n");
-      return 3;
-    }
-    dcdc_parse_data(data, ret);
+  
+  if ((ret = dcdc_get_io_data2(h, data, MAX_TRANSFER_SIZE)) <= 0){
+    fprintf(stderr, "Failed to get io data 2 from device\n");
+    return 3;
   }
+  dcdc_parse_data(data, ret);
+  
   return 0;
 }
