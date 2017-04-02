@@ -92,7 +92,8 @@ struct Dcdc_Nuc_Data {
   bool cfg1;  // Use unknown.
   bool cfg2;  // Use unknown.
   bool cfg3;  // Use unknown.
-
+  bool control_frequency;  // Use unknown.
+  bool not_power_switch;  // Use unknown.
   // 'false' for Dumb Mode and 'true' for Automotive Mode.
   bool mode;
   // Sense if the USB is connected, should be alwayd true.
