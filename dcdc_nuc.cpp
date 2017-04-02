@@ -239,7 +239,7 @@ int main(int argc, char **argv) {
     printf("ThumpEnabled: %s\n", data.thump_ouput_enabled ? "true" : "false");
     printf("ControlFrequency: %s\n", data.control_frequency ? "true" : "false");
     printf("nPSW: %s\n", data.not_power_switch ? "true" : "false");
-    
+
     printf("InputVoltage: %.2f\n", data.input_voltage);
     printf("InputCurrent: %.2f\n", data.input_current);
     printf("OutputVoltage: %.2f\n", data.output_voltage);
